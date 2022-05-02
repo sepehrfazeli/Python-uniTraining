@@ -1,5 +1,5 @@
 import random
-from sheet5_1 import norm
+from sheet5.sheet5_1 import norm
 
 
 def gen(x):

@@ -6,5 +6,4 @@ def norm(v, p):
     log = (1 / p) * (math.log10(under))
     return 10 ** log
 
-
-print(norm([2, 2], 2))
+# print(norm([2, 2], 2))
