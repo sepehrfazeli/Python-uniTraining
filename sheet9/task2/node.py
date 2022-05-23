@@ -4,9 +4,9 @@ from abc import abstractmethod
 
 class Node:
     def __init__(self, name, owner):
-        self.name = name
-        self.owner = owner
-        self.creation_date = datetime.now()
+        self._name = name
+        self._owner = owner
+        self._creation_date = datetime.now()
 
     @abstractmethod
     def get_size(self):
@@ -17,12 +17,13 @@ class Node:
         pass
 
     def __str__(self):
-        date_time_format = ""
+        date_time_format = "%d/%m/%Y %H:%M:%S"
 
-    def print_attributes(self):
-        print(f"name : {self.name}\n"
-              f"owner : {self.owner}\n"
-              f"creation_date : {self.creation_date}")
+        creation_date_formatted = self._creation_date.strftime(date_time_format)
+        modification_date_formatted = self.get_modification_date().strftime(date_time_format)
 
-
-
+        return f"name : {self.name} " \
+               f"owner : {self.owner} " \
+               f"size : {self.get_size()}" \
+               f"creation_date : {creation_date_formatted}" \
+               f"modification_date : {modification_date_formatted}"
