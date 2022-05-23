@@ -25,24 +25,4 @@ class Node:
               f"creation_date : {self.creation_date}")
 
 
-class File(Node):
-    def __init__(self, size):
-        self.size = size
 
-    def get_modification_date(self):
-        pass
-
-    def get_size(self):
-        pass
-
-
-class Directory(Node):
-
-    def __init__(self):
-        self._nodes = []
-
-    def get_size(self):
-        pass
-
-    def get_modification_date(self):
-        pass
