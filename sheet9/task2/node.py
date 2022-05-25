@@ -22,8 +22,8 @@ class Node:
         creation_date_formatted = self._creation_date.strftime(date_time_format)
         modification_date_formatted = self.get_modification_date().strftime(date_time_format)
 
-        return f"name : {self.name} " \
-               f"owner : {self.owner} " \
+        return f"name : {self._name} " \
+               f"owner : {self._owner} " \
                f"size : {self.get_size()}" \
                f"creation_date : {creation_date_formatted}" \
                f"modification_date : {modification_date_formatted}"
