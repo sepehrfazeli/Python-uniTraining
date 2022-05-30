@@ -2,7 +2,6 @@ import logging
 import random
 import re
 
-
 log = logging.getLogger(__name__)
 
 
@@ -221,10 +220,12 @@ class Eliza:
 
         print(self.final())
 
+
 def main():
     eliza = Eliza()
     eliza.load('doctor.txt')
     eliza.run()
+
 
 if __name__ == '__main__':
     logging.basicConfig()

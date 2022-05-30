@@ -19,17 +19,36 @@ class ElizaState:
 
 class Normal(ElizaState):
     """ Answer normally """
-    pass
+
+    def switch_state(self, output):
+        # pass
+        if output.startswith("Please"):
+            self.hysteric_eliza.state = Sad(self.hysteric_eliza)
+        elif "n't " in output:
+            self.hysteric_eliza.state = Angry(self.hysteric_eliza)
+
+    def process_output(self, output):
+        return output
 
 
 class Angry(ElizaState):
     """ ANSWER ONLY IN UPPERCASE (use String.upper() to do this) """
-    pass
+    # elif self.state == "Angry":
+    # if output.startswith("Do you") or output.startswith("Please"):
+    #     self.state = "Normal"
+    # elif output.startswith("Why"):
+    #     self.state = "Sad"
+    # elif self.state == "Angry":
+    #     return output.upper()
 
 
 class Sad(ElizaState):
     """ answer only in lowercase (use String.lower() to do this) """
-    pass
+    # elif self.state == "Sad":
+    # if output.startswith("Do "):
+    #     self.state = "Normal"
+    # elif self.state == "Sad":
+    #     return output.lower()
 
 
 class HystericEliza:
@@ -41,25 +60,8 @@ class HystericEliza:
         self.eliza.load(replies)
 
     def process_output(self, output):
-        if self.state == "Normal":
-            if output.startswith("Please"):
-                self.state = "Sad"
-            elif "n't " in output:
-                self.state = "Angry"
-        elif self.state == "Angry":
-            if output.startswith("Do you") or output.startswith("Please"):
-                self.state = "Normal"
-            elif output.startswith("Why"):
-                self.state = "Sad"
-        elif self.state == "Sad":
-            if output.startswith("Do "):
-                self.state = "Normal"
-        if self.state == "Normal":
-            return output
-        elif self.state == "Angry":
-            return output.upper()
-        elif self.state == "Sad":
-            return output.lower()
+        self.state.switch
+        pass
 
     def run(self):
         initial = self.process_output(self.eliza.initial())
@@ -71,7 +73,7 @@ class HystericEliza:
             output = self.eliza.respond(sent)
             if output is None:
                 break
-            
+
             formatted = self.process_output(output)
             print(formatted)
 
