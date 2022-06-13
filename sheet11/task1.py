@@ -21,5 +21,5 @@ while True:
     elif x1[1] == '-':
         result = x1[0] - x1[2]
     else:
-        print('the funtion is not supported')
+        raise FormularError('the funtion is not supported')
     print(result)
